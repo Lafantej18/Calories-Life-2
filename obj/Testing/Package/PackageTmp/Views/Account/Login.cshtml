@@ -1,0 +1,65 @@
+﻿@model Calories_Life_2.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<main>
+    <div class="container pt-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-auto align-items-center">
+                <section id="loginForm" class="site-border">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h2 style="color:#5e594a;">Log to your account</h2>
+                        <hr />
+                        <div id="login-error">
+                            @Html.ValidationMessage("loginError", "", new { @class = "text-danger" })
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            <div>@Html.LabelFor(o => o.Email)</div>
+                            <div>
+                                @Html.TextBoxFor(o => o.Email, new { @class = "form-control", placeholder = "Enter Email" })
+                                @Html.ValidationMessageFor(o => o.Email, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div>@Html.LabelFor(o => o.Password)</div>
+                            <div>
+                                @Html.PasswordFor(o => o.Password, new { @class = "form-control", placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group form-check">
+                            @Html.CheckBoxFor(o => o.RememberMe, new { @class = "form-check-input", @checked = "checked" })
+                            @Html.LabelFor(o => o.RememberMe)
+                        </div>
+                        <hr />
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn site-button" value="Log in">Log In</button>
+                            <p>
+                                @Html.ActionLink("Not have account yet? Sign up!", "Register")
+                            </p>
+                        </div>
+
+                    }
+                </section>
+                @*<section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>*@
+            </div>
+        </div>
+    </div>
+</main>
+@section ScriptsBottom {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@* Enable this once you have account confirmation enabled for password reset functionality
+    <p>
+        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+    </p>*@

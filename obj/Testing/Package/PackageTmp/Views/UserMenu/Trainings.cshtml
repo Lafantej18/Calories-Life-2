@@ -1,0 +1,154 @@
+﻿@model Calories_Life_2.ViewModels.CaloriesTrainingsViewModel
+@{
+    ViewBag.Title = "Trainings";
+}
+
+@section CssTop {
+    @Styles.Render("~/Content/themes/css")
+
+}
+
+<main>
+    <div class="container mt-5">
+        <section>
+            <h4 class="text-center" style="color:#5e594a;">Add Exercices</h4>
+            @using (Html.BeginForm("AddExercise", "UserMenu", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row justify-content-center form-group">
+
+                    @Html.TextBoxFor(m => m.caloriesTrainingEnterWords.term,
+                        new { @class = "col-sm-4 pr-1 form-control", placeholder = "Enter your exercise", id = "search-filter" })
+
+                    @Html.TextBoxFor(m => m.caloriesTrainingEnterWords.time,
+                        new { @class = "col-sm-4 pr-1 form-control", placeholder = "Enter minutes of training", id = "search-filter" })
+
+                    <input type="submit" class="btn food-blocks col-sm-1 pl-3" value="Add" />
+                </div>
+            }
+        </section>
+        <p class="text-danger text-center">@ViewBag.StatusMessage</p>
+
+        <section>
+            <hr />
+            <div class="ListOfFoods">
+                <h4 style="color:#5e594a;">Training</h4>
+                @if (Model.CaloriesTrainings != null)
+                {
+                    <ol>
+                        @foreach (var CaloriesTraining in Model.CaloriesTrainings.Where(a => a.Day == DateTime.Today))
+                        {
+                            <li>
+                                <h5>
+                                    @CaloriesTraining.NameOfExercise
+                                    <small>
+                                        <b>    Time:  </b>   @CaloriesTraining.ExerciseTime min
+                                        <b>  Kcal:  </b>   @CaloriesTraining.ExerciseCalories kcal
+                                        @Html.ActionLink("Delete", "RemovingExercise", "UserMenu", routeValues: new { exerciseId = CaloriesTraining.CaloriesTrainingId }, htmlAttributes: new { @class = "btn btn-link btn-remove" })
+                                    </small>
+                                </h5>
+                            </li>
+                        }
+                    </ol>
+                }
+
+                <hr />
+                <h4 class="text-center" style="color:#5e594a;">All calories: @Model.SumKcal kcal</h4>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+@section ScriptsBottom {
+    @Scripts.Render("~/bundles/jquery")
+
+    <script>
+        $(document).ready(function () {
+            var Activities = [
+               "weight lifting",
+               "running",
+               "swimming",
+               "walking",
+               "road cycling",
+               "trampoline",
+               "general workout",
+               "tennis",
+               "american football",
+               "soccer",
+               "basketball",
+               "volleyball",
+               "skiing",
+               "rock climbing",
+               "horseback riding",	
+               "skateboarding",	
+               "circuit training",	
+               "canoeing",	
+               "rollerblading",	
+               "Mixed Martial Arts",	
+               "boxing",	
+               "martial arts",	
+               "yoga",	
+               "dancing",	
+               "zumba class",	
+               "slow dancing",	
+               "fencing",	
+               "jumping rope",	
+               "golf",	
+               "ping pong",	
+               "stretching",	
+               "acrobatics",	
+               "pole dancing",	
+               "diving",	
+               "billiards",	
+               "badminton",	
+               "calisthenics",	
+               "cheerleading",	
+               "frisbee",	
+               "hockey",	
+               "bowling",	
+               "cricket",	
+               "Lacrosse",	
+               "archery",	
+               "body building",	
+               "paintball",	
+               "handball",	
+               "softball ",	
+               "baseball",	
+               "outdoor games",	
+               "rugby",	
+               "kitesurfing",	
+               "sailing",	
+               "squash",	
+               "skeet shooting",	
+               "juggling",	
+               "darts",	
+               "aerobics",
+               "MMA",
+               "judo",
+               "karate",
+               "kickboxing",
+               "capoeira",
+               "wrestling",
+               "krav maga",
+               "sexual activity",
+               "free weights",
+               "powerlifting",
+               "office work",
+               "strengthening",
+               "bench press",
+               "deadlift",
+               "push ups",
+               "squats" 
+            ];
+
+            $("#search-filter").autocomplete({
+                minLength:2,
+                source: Activities
+             });
+        })
+    </script>
+
+}

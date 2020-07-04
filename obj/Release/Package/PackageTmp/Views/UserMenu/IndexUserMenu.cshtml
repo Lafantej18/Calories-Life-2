@@ -1,0 +1,36 @@
+﻿@model Calories_Life_2.Models.UserMenu
+@{
+    ViewBag.Title = "- Menu";
+}
+
+<div class="container">
+    <div class="jumbotron jumbotron-user-menu mt-5">
+
+        <h1 class="text-center main-text">Your Daily Caloric Demand: @Model.CaloricDemandChangable  kcal</h1>
+        <div class="row align-items-center justify-content-center mt-2">
+            <div class="col-sm-7 nutritiens text-center">
+                <p class="d-inline-block">Proteins<br/> @Model.ProteinsChangable g</p>
+                <p class="d-inline-block carbos">Carbohydrates<br /> @Model.CarbohydratesChangable g</p>
+                <p class="d-inline-block">Fat<br /> @Model.FatChangable g</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-2">
+        <div class="col-sm-6 align-items-center pt-4">
+            <div>
+                @Html.ActionLink("Food", "IndexFood", "Food", routeValues: new { id = Model.UserMenuId }, htmlAttributes: new { @class="btn pt-3 position-relative menu-blocks pr-2" })
+            </div>
+        </div>
+        <div class="col-sm-6 align-items-center  pt-4">
+            <div>
+                @Html.ActionLink("Trainings", "Trainings", "UserMenu", routeValues: new { id = Model.UserMenuId }, htmlAttributes: new { @class = "btn pt-3 position-relative menu-blocks px-2" })
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+

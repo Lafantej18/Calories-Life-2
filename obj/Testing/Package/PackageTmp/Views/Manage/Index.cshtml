@@ -1,0 +1,55 @@
+﻿@using Calories_Life_2.Models;
+@model Calories_Life_2.Models.IndexViewModel
+@{
+    ViewBag.Title = "Account";
+}
+
+<main>
+    <div class="container mt-5">
+        <h3 class="text-center" style="color:#5e594a;">Change your account settings</h3>
+        <p class="text-success text-center">@ViewBag.StatusMessage</p>
+        <hr />
+        <div class="row justify-content-center">
+            <div class="col-auto align-items-center">
+
+                @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group md-form">
+                            @Html.LabelFor(m => m.ChangePasswordViewModel.OldPassword, new { @class = "form-check-label" })
+                            @Html.PasswordFor(m => m.ChangePasswordViewModel.OldPassword, new { @class = "form-control", placeholder = "Enter password" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ChangePasswordViewModel.NewPassword, new { @class = "form-check-label" })
+                            @Html.PasswordFor(m => m.ChangePasswordViewModel.NewPassword, new { @class = "form-control", placeholder = "New password" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ChangePasswordViewModel.ConfirmPassword, new { @class = "form-check-label" })
+                            @Html.PasswordFor(m => m.ChangePasswordViewModel.ConfirmPassword, new { @class = "form-control", placeholder = "New password" })
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Submit" class="btn site-button" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <hr class="pt-2" />
+        <h3 class="text-center pb-3" style="color:#5e594a;">Change your personal data</h3>
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="align-items-center">
+                @Html.ActionLink("Change User Data", "ChangeUserData", "Manage", routeValues: null, htmlAttributes: new { @class = "btn site-button " })
+            </div>
+        </div>
+
+    </div>
+</main>
+@section ScriptsBottom {
+    @Scripts.Render("~/bundles/jqueryval")
+}

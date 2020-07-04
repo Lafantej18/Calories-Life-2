@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Calories Life</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("CssTop", required: false)
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+             style="background-color: #191919;">
+
+            <a class="navbar-brand ml-5" href="@Url.Action("Index", "Home")"
+               alt="Calories Life">
+                <img src="@Url.Content("~/Content/img/logo.png")"
+                     class="d-inline-block align-bottom logo-brand" />
+            </a>
+
+            <button class="navbar-toggler" type="button" 
+                    data-toggle="collapse" data-target="#navbar-row"
+                    aria-controls="navbar-row" 
+                    aria-expanded="false" aria-label="Navigation Switch">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbar-row">
+                <ul class="navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Menu", "IndexUserMenu", "UserMenu", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </nav>
+    </header>
+
+    <div class="padding-space">
+        @RenderBody()
+    </div>
+
+    <footer class="site-footer">
+
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <h3>Search Trending</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="@Url.Content("#")">Lorem ipsum</a></li>
+                        <li><a href="@Url.Content("#")">Lorem ipsum</a></li>
+                        <li><a href="@Url.Content("#")">Lorem ipsum</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <h3>FAQ</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="@Url.Action("About", "Home")" alt="About Us">About Us</a></li>
+                        <li><a href="@Url.Content("#")">Lorem ipsum</a></li>
+                        <li><a href="@Url.Content("#")">Lorem ipsum</a></li>
+                        <li><a href="@Url.Content("#")">Lorem ipsum</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <h3>Support</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="@Url.Content("#")">Support</a></li>
+                        <li><a href="@Url.Content("#")">Privacy</a></li>
+                        <li><a href="@Url.Content("#")">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <h3>Contact Us</h3>
+                    <div class="footer-social">
+                        <a href="@Url.Content("https://www.facebook.com/")" target="_blank"><span class="fa fa-facebook fa-lg"></span></a>
+                        <a href="@Url.Content("https://twitter.com/")" target="_blank"><span class="fa fa-twitter fa-lg"></span></a>
+                        <a href="@Url.Content("https://www.instagram.com/")" target="_blank"><span class="fa fa-instagram fa-lg"></span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-12 copyright">
+                    <p id="license">
+                        <small> Icons made by Freepik, wanicon, DinosoftLabs from www.flaticon.com </small>
+                    </p>
+
+                    <p>
+                        <small>
+                            &copy; 2019-@DateTime.Now.Year - Calories Life
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("ScriptsBottom", required: false)
+
+</body>
+</html>

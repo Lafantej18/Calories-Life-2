@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\lafan\source\repos\Calories-Life-2\Calories-Life-2\obj\Testing\Package\PackageTmp" />
+  <setAcl path="C:\Users\lafan\source\repos\Calories-Life-2\Calories-Life-2\obj\Testing\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\lafan\source\repos\Calories-Life-2\Calories-Life-2\obj\Testing\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

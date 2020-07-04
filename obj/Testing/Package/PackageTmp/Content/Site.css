@@ -1,0 +1,388 @@
+﻿body {
+    /* Background pattern from Toptal Subtle Patterns */
+    background-image: url(img/background.png);
+    background-color: #f0f0f0;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.navbar {
+    padding: 5px 20px 5px 20px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #cac5b5
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #f6c53d;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.padding-space
+{
+    padding-top: 70px;
+    min-height: 800px;
+}
+.home-section {
+    position: relative;
+}
+
+.home-section-tools h1, h2 {
+    color: #5e594a;
+}
+
+.home-section p {
+    color: #191919;
+}
+
+.opinion-img {
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.section-hero, .section-hero > .container > .row {
+    height: 100vh;
+    min-height: 900px;
+}
+
+/*.section-hero.overlay, .section-hero.overlay-2 {
+    position: relative;
+}*/
+
+    .section-hero.overlay:before, .section-hero.overlay-2:before {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;  
+    }
+
+.bg-image {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/*.section-hero > .container {
+    z-index: 2;
+    position: relative;
+}*/
+
+.site-button {
+    min-width: 150px;
+    background-color: #9b2853;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #f6c53d;
+    text-shadow: none;
+}
+
+    .site-button:hover {
+        background-color: #f6c53d;
+        color: #9b2853
+    }
+
+.home-jumbotron {
+    background-color: #b0ab9b;
+    color: ghostwhite;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.home-icons {
+    position: relative;
+    height: 50%;
+    width: 50%;
+}
+
+.site-footer {
+    background-color: #191919;
+    padding: 4rem 0 0 0;
+    color: #cac5b5;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.site-footer ul li {
+    margin-bottom: .1rem;
+}
+
+    .site-footer ul li a {
+        color: #837f72;
+    }
+
+        .site-footer ul li a:hover {
+            color: #f6c53d;
+        }
+
+.copyright {
+    color: #837f72;
+}
+
+#license{
+    margin-bottom: 1px;
+}
+
+.footer-social a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background-color: #9b2853;
+    border-radius: 50%;
+    text-decoration: none !important;
+}
+
+    .footer-social a > span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        color: #cac5b5;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .footer-social a:hover{
+        background-color: #f6c53d;
+    }
+
+        .footer-social a:hover span {
+            color: #837f72;
+        }
+
+.site-border {
+    border: 5px solid #837f72;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.col-centered {
+    margin: 0 auto;
+    float: none;
+}
+
+#FacebookLoginButton {
+    background-image: url("/Content/img/fb-login.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 200px;
+    height: 40px;
+    border: 0px;
+    background-color: white;
+    cursor: pointer;
+    outline: 0;
+}
+
+#GoogleLoginButton {
+    background-image: url(img/google-login.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 200px;
+    height: 40px;
+    border: 0px;
+    background-color: white;
+    cursor: pointer;
+    outline: 0;
+}
+
+#loginForm {
+    background-color: #f0f0f0;
+}
+
+.nutritiens {
+    font-size: 1.8em;
+    font-weight: 500;
+    padding: 0;
+}
+
+.menu-blocks {
+    display: block;
+    background-color: #9b2853;
+    height: 100px;
+    text-decoration: none;
+    color: #f6c53d;
+    font-size: 2.3em;
+    font-weight: 500;
+    -webkit-box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+    box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+}
+
+    .menu-blocks:hover {
+        background-color: #f6c53d;
+        color: #9b2853;
+        text-decoration: none;
+    }
+
+.jumbotron-user-menu {
+    background-color: #f6c53d;
+    color: #9b2853;
+    -webkit-box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+    box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+}
+
+.carbos {
+    padding: 0 1.5em 0 1.5em;
+}
+
+.logo-brand{
+    height: 50px;
+    width: 214px;
+}
+
+.nutritiens-counter {
+    padding: 0 15px 0 15px;
+    font-size: 1.5rem;
+}
+
+    .nutritiens-counter:first-child {
+        margin-left: 12rem;
+    }
+
+@media (max-width: 992px) {
+    .carbos {
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    .nutritiens {
+        font-size: 1.5em;
+        padding: 0 0 0 0;
+    }
+
+    #repicies {
+        padding-bottom: 8em;
+    }
+
+    .nutritiens-counter {
+        padding: 0 0 0 0;
+        font-size: 1.25rem;
+    }
+
+        .nutritiens-counter:first-child {
+            margin-left: 6rem;
+        }
+
+}
+
+@media (max-width: 768px) {
+    .carbos {
+        padding: 0 0em 0 0em;
+    }
+
+    .nutritiens {
+        font-size: 1.3em;
+        padding: 0 0 0 0;
+    }
+
+    #repicies {
+        padding-bottom: 8em;
+    }
+
+    .menu-blocks{
+        font-size: 1.5em;
+    }
+
+    .nutritiens-counter {
+        padding: 0 0 0 0;
+        font-size: 1rem;
+    }
+
+    .nutritiens-counter:first-child {
+        margin-left: 2rem;
+    }
+}
+@media (max-width: 576px) {
+    .carbos {
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    .nutritiens {
+        font-size: 1.5em;
+    }
+
+    .logo-brand {
+        max-height: 30px;
+        max-width: 128px;
+    }
+
+    .padding-space {
+        padding-top: 40px;
+        min-height: 800px;
+    }
+
+    #repicies {
+        padding-bottom: 8em;
+    }
+
+    .menu-blocks {
+        font-size: 2.3em;
+    }
+
+    .nutritiens-counter {
+        padding: 0 0 0 0;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+        .nutritiens-counter:first-child {
+            margin-left: 1.5rem;
+        }
+
+}
+
+.ListOfFoods{
+    padding-bottom: 100px;
+}
+
+.food-blocks {
+    display: block;
+    background-color: #9b2853;
+    text-decoration: none;
+    color: #f6c53d;
+    font-weight: 500;
+    -webkit-box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+    box-shadow: 6px 4px 23px -7px rgba(0,0,0,0.75);
+}
+
+    .food-blocks:hover {
+        background-color: #f6c53d;
+        color: #9b2853;
+        text-decoration: none;
+    }
+
+ul {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.btn-remove {
+    text-align: right;
+}
+
+.jumbotron-user-food{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+}
+
+.woman-radio{
+    padding-left: 20px;
+    margin-left: 0;
+}

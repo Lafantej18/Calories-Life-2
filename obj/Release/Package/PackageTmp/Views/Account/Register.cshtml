@@ -1,0 +1,58 @@
+﻿@model Calories_Life_2.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "- Register";
+} 
+
+<main>
+    <div class="container pt-5 mt-5">
+        <h4 class="text-danger text-center">@ViewBag.StatusMessage</h4>
+        <div class="row justify-content-center">
+            <section id="loginForm" class="site-border">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                {
+
+                    @Html.AntiForgeryToken()
+                    <h2 style="color:#5e594a;">Create a new account</h2>
+                    <hr />
+                    @Html.ValidationMessage("loginerror", "")
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="col form-group align-items-center">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter Email" })
+                    </div>
+                    <div class="col form-group align-items-center">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    </div>
+
+                    <div class="col form-group align-items-center">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                    </div>
+
+                    <hr />
+                    <div class="text-center">
+                        <button type="submit" class="btn site-button" value="Register">Sign Up</button>
+                    </div>
+                }
+
+                <div class="form-group text-center">
+                    @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <div class="pt-2">
+                            <button type="submit" id="FacebookRegisterButton" name="provider" class="btn d-inline-block" title="Log in using your Facebook"
+                                    value="Facebook"></button>
+                            <button type="submit" id="GoogleRegisterButton" name="provider" class="btn d-inline-block" title="Log in using your Google"
+                                    value="Google"></button>
+                        </div>
+
+                    }
+                </div>
+            </section>
+            </div>
+        </div>
+</main>
+@section ScriptsBottom {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,126 @@
+﻿@model Calories_Life_2.ViewModels.FoodSavesViewModel
+@{
+    ViewBag.Title = "Food";
+}
+
+@section CssTop {
+    @Styles.Render("~/Content/themes/css")
+
+}
+
+<main>
+    <div class="container mt-5">
+        <section>
+            <h4 class="text-center" style="color:#5e594a;">Add Food</h4>
+            @using (Html.BeginForm("AddFood", "Food", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row justify-content-center form-group">
+
+                    @Html.TextBoxFor(m => m.caloriesFoodEnterWords.SearchQuery,
+                        new { @class = "col-sm-4 pr-1 form-control", placeholder = "Enter your food", id = "search-filter" })
+
+                    @Html.DropDownListFor(m => m.caloriesFoodEnterWords.Meal, new SelectList(ViewBag.list, "Id", "Text"),
+                        new { @class = "col-sm-2 form-control" })
+                    <input type="submit" class="btn food-blocks col-sm-1 pl-3" value="Add" />
+                </div>
+            }
+        </section>
+        <p class="text-danger text-center">@ViewBag.StatusMessage</p>
+
+        <section>
+            <hr />
+            <div class="ListOfFoods">
+                @for (int i = 0; i < ViewBag.list.Count; i++)
+                {
+                    <ul class="mb-2">
+                        <li>
+                            <div class="jumbotron jumbotron-user-food">
+                                <h4 class="font-weight-bold" style="color:#5e594a;">@ViewBag.list[i].Text</h4>
+                            </div>
+                        </li>
+
+                        <li>
+                            @if (Model.FoodSaveses != null)
+                            {
+                                <ol>
+                                    @foreach (var FoodSaves in Model.FoodSaveses.Where(a => a.Meal == ViewBag.list[i].Id && a.Day == DateTime.Today))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <li>
+                                            <h5>
+                                                @using (Html.BeginForm("ChangeServingSize", "Food", FormMethod.Post))
+                                                {
+                                                    @FoodSaves.Name
+                                                    <small>
+                                                        <b>    Kcal:  </b>      @FoodSaves.Kcal kcal
+                                                        <b>  Proteins:  </b>   @FoodSaves.Proteins g
+                                                        <b>  Carbs:  </b>   @FoodSaves.Carbs g
+                                                        <b>  Fat:  </b>   @FoodSaves.Fat g
+                                                        <b>  Size:  </b>
+
+                                                        @if (FoodSaves.Is100Grams == true)
+                                                        {
+                                                            <input name="param" class="servingSize" type="number" value="@FoodSaves.ServingSize" min="0.01" max="40" step="0.01" style="width: 4em" />
+                                                            <text> on (@FoodSaves.ServingWeightGrams g) </text>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input name="param" class="servingSize" type="number" value="@FoodSaves.ServingSize" min="0.5" max="30" step="0.5" style="width: 3em" />
+                                                            @FoodSaves.ServingUnit
+                                                            <text>(@FoodSaves.ServingWeightGrams g) </text>
+                                                        }
+
+
+                                                        <input type="hidden" name="foodItemId" value="@FoodSaves.FoodSavesId" />
+                                                        <input type="submit" class="btn btn-link btn-remove order" value="Edit Size">
+                                                        @Html.ActionLink("Delete", "RemovingFoodItem", "Food", routeValues: new { foodItemId = FoodSaves.FoodSavesId }, htmlAttributes: new { @class = "btn btn-link btn-remove" })
+                                                    </small>
+                                                }
+                                            </h5>
+                                        </li>
+                                    }
+                                </ol>
+                            }
+                        </li>
+                    </ul>
+                }
+
+                <hr />
+                <h4 class="text-center" style="color:#5e594a;">Sum of all nutritions</h4>
+                <div class="row justify-content-center">
+                    <div class="col-12 align-items-center">
+                        <div class="d-inline-block nutritiens-counter">
+                            <b>Kcal: </b> @Model.SumKcal kcal
+                        </div>
+                        <div class="d-inline-block nutritiens-counter">
+                            <b>Proteins: </b> @Model.SumProteins g
+                        </div>
+                        <div class="d-inline-block nutritiens-counter">
+                            <b>Carbs: </b> @Model.SumCarbs g
+                        </div>
+                        <div class="d-inline-block nutritiens-counter">
+                            <b>Fat: </b> @Model.SumFat g
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+@section ScriptsBottom {
+    @Scripts.Render("~/bundles/jquery")
+
+    <script>
+        $(document).ready(function () {
+            $("#search-filter").autocomplete({
+                source: "@Url.Action("FoodAutocomplete", "Food")"
+             });
+        })
+
+    </script>
+
+}
