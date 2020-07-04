@@ -58,8 +58,8 @@ namespace Calories_Life_2
 
             var options = new FacebookAuthenticationOptions()
             {
-                AppId = "2752563294829090",
-                AppSecret = "6569d313cc715cdb7f0ee2d586761398"
+                AppId = "#########################",
+                AppSecret = "#######################"
             };
             options.Scope.Add("email");
 
@@ -67,8 +67,8 @@ namespace Calories_Life_2
 
             var options_2 = new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "61705000761-utjr29jil3g92ns84125q13u282gmtpi.apps.googleusercontent.com",
-                ClientSecret = "ftdMR8RQq79YzdiZ5QKy861p"
+                ClientId = "#################################",
+                ClientSecret = "#########################"
             };
             options.Scope.Add("email");
 
